@@ -67,23 +67,28 @@ function App() {
             Cadastrar
           </button>
         </div>
-      </div>
-      
-      <div className="app--container2">
-      {typeof listGames !== "undefined" &&
-          listGames.map((value) => {
-            return (
-              <Card
-                key={value.id}
-                listCard={listGames}
-                setListCard={setListGames}
-                id={value.idgames}
-                name={value.name}
-                cost={value.cost}
-                category={value.category}
-              ></Card>
-            );
-          })}
+
+
+
+        <div className="app--container2">
+          {typeof listGames !== "undefined" &&
+            listGames.map((value) => {
+              return (
+                <Card
+                  key={value.id}
+                  listCard={listGames}
+                  setListCard={setListGames}
+                  id={value.idgames}
+                  name={value.name}
+                  cost={value.cost}
+                  category={value.category}
+                ></Card>
+              );
+            })}
+        </div>
+
+
+        
       </div>
     </EstruturaPagina>
   );

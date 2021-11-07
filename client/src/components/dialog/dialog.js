@@ -93,7 +93,7 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="cost"
-            label="preço"
+            label="Preço"
             defaultValue={props.cost}
             type="number"
             onChange={handleChangeValues}
