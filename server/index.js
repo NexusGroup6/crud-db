@@ -6,7 +6,7 @@ const cors = require("cors");
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "nexus",
+    password: "root",
     database: "crudgames",
 });
 
@@ -48,8 +48,8 @@ app.put("/edit", (req, res) =>{
     });
 });
 
-app.delete("/delete/id", (req, res) => {
-    const { id } = req.params;
+app.delete("/delete", (req, res) => {
+   const  { id } = req.body; 
     let SQL = "DELETE FROM games WHERE idgames = ?";
     db.query(SQL, [id], (err, result) => {
         if (err) console.log(err);

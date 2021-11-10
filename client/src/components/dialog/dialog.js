@@ -51,7 +51,7 @@ export default function FormDialog(props) {
   };
 
   const handleDeleteGame = () => {
-    Axios.delete(`http://localhost:3001/delete/${editValues.id}`).then(() => {
+    Axios.delete("http://localhost:3001/delete", {id:editValues.id}).then(() => {
       props.setListCard(
         props.listCard.filter((value) => {
           return value.id != editValues.id;
@@ -59,6 +59,7 @@ export default function FormDialog(props) {
       );
     });
     handleClose();
+    console.log = editValues;
   };
 
   return (
