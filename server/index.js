@@ -48,8 +48,8 @@ app.put("/edit", (req, res) =>{
     });
 });
 
-app.delete("/delete", (req, res) => {
-   const  { id } = req.body; 
+app.delete("/delete/:id", (req, res) => {
+    const { id } = req.params;
     let SQL = "DELETE FROM games WHERE idgames = ?";
     db.query(SQL, [id], (err, result) => {
         if (err) console.log(err);

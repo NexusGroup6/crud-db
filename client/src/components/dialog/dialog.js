@@ -6,7 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Axios from "axios";
-import produce from "immer";
+//import produce from "immer";
 
 export default function FormDialog(props) {
   const [editValues, setEditValues] = useState({
@@ -36,7 +36,7 @@ export default function FormDialog(props) {
     }).then(() => {
       props.setListCard(
         props.listCard.map((value) => {
-          return value.id == editValues.id
+          return value.id === editValues.id
             ? {
                 id: editValues.id,
                 name: editValues.name,
@@ -51,15 +51,14 @@ export default function FormDialog(props) {
   };
 
   const handleDeleteGame = () => {
-    Axios.delete("http://localhost:3001/delete", {id:editValues.id}).then(() => {
+    Axios.delete(`http://localhost:3001/delete/${editValues.id}`).then(() => {
       props.setListCard(
         props.listCard.filter((value) => {
-          return value.id != editValues.id;
+          return value.id !== editValues.id;
         })
       );
     });
     handleClose();
-    console.log = editValues;
   };
 
   return (
@@ -85,7 +84,7 @@ export default function FormDialog(props) {
             margin="dense"
             id="name"
             label="Nome do jogo"
-            defaultValue={props.name}
+            defaultValue={props.title}
             type="text"
             onChange={handleChangeValues}
             fullWidth
@@ -94,7 +93,7 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="cost"
-            label="Preço"
+            label="preço"
             defaultValue={props.cost}
             type="number"
             onChange={handleChangeValues}
